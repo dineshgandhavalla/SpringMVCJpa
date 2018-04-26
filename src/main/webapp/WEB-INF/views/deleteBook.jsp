@@ -10,6 +10,8 @@
 <form action="deleteBook">
 Enter BookId to delete <input type="text" name="bookid">
 <input type="submit" value="deleteBook">
+<h1>${deleteResult}</h1>
+
 </form>
 
 </body>

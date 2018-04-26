@@ -78,25 +78,27 @@ public class BookController {
 	public String deleteBook(@RequestParam("bookid") String id,Model model) throws BookNotFoundException {
 		int bookid = Integer.parseInt(id);
 		if(bookid<=0) {
-			model.addAttribute("result", "enter a valid id");
+			model.addAttribute("deleteResult", "enter a valid id");
 			return "deleteBook";
 		}
 		bookService.deleteBook(bookid);
+		model.addAttribute("delete", "deleted successfully");
 		return "admin";
 	}
 
 	@GetMapping(value = "/editBook")
-	public String updateBookForm(@RequestParam("bookid") int bookid, Model model)
+	public String updateBookForm(@RequestParam("bookid") String id, Model model)
 			throws BookNotFoundException {
+		int bookid= Integer.parseInt(id);
 		Book book = null;
 		if (bookid <= 0) {
-			model.addAttribute("result", "Invalid Id");
+			model.addAttribute("editResult", "Invalid Id");
 			return "editBook";
 		}
 
 		book = bookService.getBookById(bookid);
 		if (book == null) {
-			model.addAttribute("result", "Invalid Id");
+			model.addAttribute("editResult", "Invalid Id");
 			return "editBook";
 		}
 		model.addAttribute("book", book);
@@ -105,7 +107,8 @@ public class BookController {
 	}
 
 	@GetMapping(value="/updateBook")
-	public String updateBook(Model model) {
+	public String updateBook(Book book,Model model) throws BookNotFoundException {
+		bookService.updateBook(book);
 		model.addAttribute("update", "book updated successfully");
 		return "admin";
 		

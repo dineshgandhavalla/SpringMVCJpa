@@ -16,7 +16,7 @@
 <a href="showEditForm">Edit Book</a>
 <br>${update}<br>
 <a href="showDeleteForm">Delete Book</a>
-
+${delete}<br>
 	<br><h1>${bookmsg}</h1><br>
 </body>
 </html>

@@ -11,6 +11,6 @@
 Enter BookId to update <input type="text" name="bookid">
 <input type="submit" value="Edit Book">
 </form>
-
+<h1>${editResult}</h1><br>
 </body>
 </html>
